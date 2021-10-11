@@ -19,52 +19,54 @@ namespace ServicioRESTWebApi.Controllers
         }
 
         // GET: api/Productos/5
-        public HttpResponseMessage Get(long id)
+        public IHttpActionResult Get(long id)
         {
             Producto producto = dao.ObtenerPorId(id);
 
-            HttpStatusCode estado = producto != null ? HttpStatusCode.OK : HttpStatusCode.NotFound;
-            
-            return Request.CreateResponse(estado, producto);
+            if (producto != null)
+            {
+                return Ok(producto);
+            }
+            else
+            {
+                return NotFound();
+            }
         }
 
         // POST: api/Productos
-        public HttpResponseMessage Post([FromBody]Producto producto)
+        public IHttpActionResult Post([FromBody] Producto producto)
         {
-            return Request.CreateResponse(HttpStatusCode.Created, dao.Insertar(producto));
+            return Content(HttpStatusCode.Created, dao.Insertar(producto));
         }
 
         // PUT: api/Productos/5
-        public HttpResponseMessage Put(long id, [FromBody]Producto producto)
+        public IHttpActionResult Put(long id, [FromBody] Producto producto)
         {
             try
             {
                 producto = dao.Modificar(producto);
-                return Request.CreateResponse(HttpStatusCode.OK, producto);
+                return Ok(producto);
             }
             catch (Exception)
             {
-               return Request.CreateResponse(HttpStatusCode.NotFound);
+                return NotFound();
             }
 
-            
+
         }
 
         // DELETE: api/Productos/5
-        public HttpResponseMessage Delete(long id)
+        public IHttpActionResult Delete(long id)
         {
-            HttpStatusCode estado = HttpStatusCode.NoContent;
-
             try
             {
                 dao.Borrar(id);
+                return StatusCode(HttpStatusCode.NoContent);
             }
             catch (Exception)
             {
-                estado = HttpStatusCode.NotFound;
+                return NotFound();
             }
-
-            return Request.CreateResponse(estado);
         }
     }
 }
