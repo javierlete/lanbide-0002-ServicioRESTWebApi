@@ -5,6 +5,10 @@ VisualStudioVersion = 16.0.31702.278
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServicioRESTWebApi", "ServicioRESTWebApi\ServicioRESTWebApi.csproj", "{5F0A68E0-B6A6-4508-95B5-261ACE0B4A19}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dal", "..\ServicioRESTASPNET\Dal\Dal.csproj", "{8A705768-A320-4CD3-AACD-E1FB275C79FB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entidades", "..\ServicioRESTASPNET\Entidades\Entidades.csproj", "{7AE9430D-9BB9-4D4B-A7E2-A7901AD0162F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{5F0A68E0-B6A6-4508-95B5-261ACE0B4A19}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5F0A68E0-B6A6-4508-95B5-261ACE0B4A19}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5F0A68E0-B6A6-4508-95B5-261ACE0B4A19}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A705768-A320-4CD3-AACD-E1FB275C79FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A705768-A320-4CD3-AACD-E1FB275C79FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A705768-A320-4CD3-AACD-E1FB275C79FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A705768-A320-4CD3-AACD-E1FB275C79FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7AE9430D-9BB9-4D4B-A7E2-A7901AD0162F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7AE9430D-9BB9-4D4B-A7E2-A7901AD0162F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7AE9430D-9BB9-4D4B-A7E2-A7901AD0162F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7AE9430D-9BB9-4D4B-A7E2-A7901AD0162F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
