@@ -19,27 +19,52 @@ namespace ServicioRESTWebApi.Controllers
         }
 
         // GET: api/Productos/5
-        public Producto Get(long id)
+        public HttpResponseMessage Get(long id)
         {
-            return dao.ObtenerPorId(id);
+            Producto producto = dao.ObtenerPorId(id);
+
+            HttpStatusCode estado = producto != null ? HttpStatusCode.OK : HttpStatusCode.NotFound;
+            
+            return Request.CreateResponse(estado, producto);
         }
 
         // POST: api/Productos
-        public Producto Post([FromBody]Producto producto)
+        public HttpResponseMessage Post([FromBody]Producto producto)
         {
-            return dao.Insertar(producto);
+            return Request.CreateResponse(HttpStatusCode.Created, dao.Insertar(producto));
         }
 
         // PUT: api/Productos/5
-        public Producto Put(long id, [FromBody]Producto producto)
+        public HttpResponseMessage Put(long id, [FromBody]Producto producto)
         {
-            return dao.Modificar(producto);
+            try
+            {
+                producto = dao.Modificar(producto);
+                return Request.CreateResponse(HttpStatusCode.OK, producto);
+            }
+            catch (Exception)
+            {
+               return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+
+            
         }
 
         // DELETE: api/Productos/5
-        public void Delete(long id)
+        public HttpResponseMessage Delete(long id)
         {
-            dao.Borrar(id);
+            HttpStatusCode estado = HttpStatusCode.NoContent;
+
+            try
+            {
+                dao.Borrar(id);
+            }
+            catch (Exception)
+            {
+                estado = HttpStatusCode.NotFound;
+            }
+
+            return Request.CreateResponse(estado);
         }
     }
 }
